@@ -1,0 +1,15 @@
+<div class="post col-md-12 wow fadeInRight"
+                 data-wow-duration="1000ms" data-wow-delay="300ms">
+
+    <div class="row">
+        <div class="col-md-7">
+            <h3 class="post-heading">
+                <a href="/blog/{{p.key().id()}}#" class="post-title">{{p.subject}}</a>
+            </h3>
+        </div>
+    </div>
+
+    <small class="post-date red_text">(Posted on {{p.created.strftime("%b %d, %Y")}} by {{p.getUserName()}})</small>
+
+    <p class="post-content">{{p._render_text | safe}}</p>
+</div>

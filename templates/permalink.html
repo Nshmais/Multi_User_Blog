@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-7">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    {{error}}
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-5">
+            <a id="post-delete" class="btn btn-danger pull-right" href="/blog/deletepost/{{post.key().id()}}">Delete</a>
+            <a id="post-edit" class="btn btn-primary pull-right" href="/blog/editpost/{{post.key().id()}}">Edit</a>
+        </div>
+        {{post.render() | safe}}
+    </div>
+
+    <div class="row">
+        <div class="sub-work col-md-12">
+            <form method="post" role="form">
+                <input type="hidden" class="form-control" id="like" name="like" value="update">
+                <button type="submit" class="btn btn-primary">Like {{noOfLikes}}</button>
+            </form>
+        </div>
+
+        <div class="sub-work col-md-12">
+            <form method="post" role="form" class="comment-form">
+                <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <input type="text" class="form-control" id="comment" name="comment" value="">
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+
+        <div class="sub-work col-md-12">
+            {% for c in comments %}
+            <blockquote>
+                <a class="comment-delete btn btn-danger pull-right" href="/blog/deletecomment/{{post.key().id()}}/{{c.key().id()}}">Delete</a>
+                <a class="comment-edit btn btn-primary pull-right" href="/blog/editcomment/{{post.key().id()}}/{{c.key().id()}}">Edit</a>
+                <p>{{ c.comment }}</p>
+                <footer>{{ c.getUserName() }}</footer>
+            </blockquote>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}
+
+

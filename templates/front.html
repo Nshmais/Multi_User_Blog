@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="sub-work col-md-12">
+            <h2><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Multi Blog</h2>
+            {% if deleted_post_id %}
+                <div class="alert alert-success" role="alert">
+                    <span class="glyphicon glyphicon-success" aria-hidden="true"></span>
+                    Post deleted successully
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% for p in posts %}
+        {% if p.key().id()|string != deleted_post_id|string %}
+        <div class="row">
+            {{ p.render() | safe }}
+        </div>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
