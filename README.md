@@ -12,7 +12,7 @@ then the can login and acsess all his Blogs at any times he/she pleases.
 there are many tools uses in this project as Google App Engine, postgres database, HTML, CSS, Python... etc.  
 
 
-## Installation
+## Installation and Run
 
 To run the project
 1. Download or clone the project at [here](https://github.com/Nshmais/Multi_User_Blog-) or run this in the command line:
