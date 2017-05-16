@@ -2,6 +2,21 @@
 Registration, Login, Logout
 
 
+ -  It tells what the project is about
+The multi user Blog is a website that will allow users to create their own Blogs and post them for others to share and spark conversation and colaburation between users.
+
+- The objective or problem to solve
+
+- Your purpose or reason for doing this project
+
+- What we expect to learn from it
+
+- The tools used in this project
+Google App Engine
+
+
+
+
 To run run the project
 
 
