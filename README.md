@@ -1,5 +1,6 @@
 # Multi-User-Blog
-Registration, Login, Logout
+
+<img src="/static/img/logo.png" width="100"> Registration, Login, Logout
 
 The multi user Blog is a website that will allow users to create their own Blogs and post them for others to share and spark conversation and colaburation between users.
 
@@ -7,7 +8,7 @@ the users will be allowed to register (Sign up) and create a username and passwo
 then the can login and acsess all his Blogs at any times he/she pleases.  
 
 
-
+## Tools
 there are many tools uses in this project as Google App Engine, postgres database, HTML, CSS, Python... etc.  
 
 
