@@ -25,9 +25,9 @@ To run the project
 2. Install google cloud app engine Shell (Google Cloud SDK Shell).
 3. Navigate the Google Cloud SDK Shell commandline to the folder where the project files are saved.
 4. In the command prompt in project folder, run the command (dev_appserver.py app.yaml).
- ```javascript
-    dev_appserver.py app.yaml
-```
+    ```
+        $ dev_appserver.py app.yaml
+    ```
 
 5. The project will run on the appropriate port (usually is localhost:8080) or check the command line.
 6. Wish you luck, and hope you are not depending on it.
