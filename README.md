@@ -14,7 +14,7 @@ There are many tools uses in this project as Google App Engine, postgres databas
 
 ## Installation and Run
 
-To run the project
+In order to install and run the project please follow the following steps:
 1. Download or clone the project at [here](https://github.com/Nshmais/Multi_User_Blog-) or run this in the command line:
 
    ```
