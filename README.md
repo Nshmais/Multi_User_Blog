@@ -2,7 +2,7 @@
 
 <img src="/static/img/logo.png" width="100"> Registration, Login, Logout
 
-The multi user Blog is a website that will allow users to create their own Blogs and post them for others to share and spark conversation and colaburation between users.
+The multi user Blog is a website that will allow users to create their own Blogs and post them for others to share and spark conversation and collaboration between users.
 
 The users will be allowed to register (Sign up) and create a username and password to save their blogs.
 then the can login and acsess all his Blogs at any times he/she pleases.  
