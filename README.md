@@ -4,12 +4,12 @@
 
 The multi user Blog is a website that will allow users to create their own Blogs and post them for others to share and spark conversation and colaburation between users.
 
-the users will be allowed to register (Sign up) and create a username and password to save their blogs.
+The users will be allowed to register (Sign up) and create a username and password to save their blogs.
 then the can login and acsess all his Blogs at any times he/she pleases.  
 
 
 ## Tools
-there are many tools uses in this project as Google App Engine, postgres database, HTML, CSS, Python... etc.  
+There are many tools uses in this project as Google App Engine, postgres database, HTML, CSS, Python... etc.  
 
 
 ## Installation and Run
