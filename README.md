@@ -30,7 +30,8 @@ In order to install and run the project please follow the following steps:
     ```
 
 5. The project will run on the appropriate port (usually is localhost:8080) or check the command line.
-6. Wish you luck, and hope you are not depending on it.
+6. To terminate the Localhost IP on Google Cloud SDK Shell commandline type **Ctrl+C**.
+7. Wish you luck, and hope you are not depending on it.
 
 
 ## License
