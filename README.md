@@ -9,7 +9,7 @@ then the can login and acsess all his Blogs at any times he/she pleases.
 
 
 ## Tools
-There are many tools uses in this project as Google App Engine, postgres database, HTML, CSS, Python... etc.  
+There are many tools uses in this project such as Google App Engine, postgres database, HTML, CSS, Python... etc.  
 
 
 ## Installation and Run
