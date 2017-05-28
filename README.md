@@ -40,7 +40,12 @@ To write on the console in Google App Engine for debugging use the following in 
 
    logging.info("hello")
 ```
-
+## Access Database
+In Google App Engine DB is called **Datastore**. To navigate to the datastore viwer to see your tables go to *admin_server* localhost port. It will displayed when you run the project on the console (in my case "localhost:8000")
+```
+      admin_server.py:116] Starting admin server at: http://localhost:8000
+```
+ When you are in the admin_server, choose **Datastore Viewer** from the sidebar and use dropdown menu to swich between tables.
+ 
 ## License
-
 `Multi-User-Blog` is a released under the [MIT License](https://opensource.org/licenses/MIT)
