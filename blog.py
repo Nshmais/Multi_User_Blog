@@ -211,17 +211,12 @@ class DeletePost(BlogHandler):
         if self.user:
             key = db.Key.from_path('Post', int(post_id), parent=blog_key())
             post = db.get(key)
-            # logging.info(post)
             # check if the post exist in the database
-            Xposts = Post.all().filter("post_id",int(post_id))
-            # logging.info(Xposts)
             if not post:
-                # if user is not logged in redirect to login page
+                # if post does not exist, redirect to login page
                 return self.redirect('/login')
 
-
             if post.user_id == self.user.key().id():
-            # if post.user_id == Xposts.post_id:
                 post.delete()
 
                 # delete all the comments associated with that post
@@ -244,6 +239,9 @@ class EditPost(BlogHandler):
         if self.user:
             key = db.Key.from_path('Post', int(post_id), parent=blog_key())
             post = db.get(key)
+            if not post:
+                # if post does not exist, redirect to login page
+                return self.redirect('/login')
             if post.user_id == self.user.key().id():
                 self.render("editpost.html", subject=post.subject,
                             content=post.content)
@@ -268,6 +266,14 @@ class EditPost(BlogHandler):
             if subject and content:
                     key = db.Key.from_path('Post', int(post_id), parent=blog_key())
                     post = db.get(key)
+                    #make sure the post exist
+                    if not post:
+                        # if post does not exist, redirect to login page
+                        return self.redirect('/login')
+                    #make sure the user owns the post
+                    if self.user.key().id() != post.user_id:
+                        ## handle case
+                        return self.redirect('/login')
                     post.subject = subject
                     post.content = content
                     post.put()
@@ -284,6 +290,9 @@ class DeleteComment(BlogHandler):
             key = db.Key.from_path('Comment', int(comment_id),
                                    parent=blog_key())
             c = db.get(key)
+            if not c:
+                # if post does not exist, redirect to login page
+                return self.redirect('/login')
             if c.user_id == self.user.key().id():
                 c.delete()
                 return self.redirect("/blog/"+post_id+"?deleted_comment_id=" +
@@ -320,6 +329,14 @@ class EditComment(BlogHandler):
             return self.redirect('/blog')
 
         comment = self.request.get('comment')
+
+        if not comment:
+            # if post does not exist, redirect to login page
+            return self.redirect('/login')
+        #make sure the user owns the post
+        if self.user.key().id() != comment.user_id:
+            ## handle case
+            return self.redirect('/login')
 
         if self.user:
             if comment:
