@@ -1,6 +1,7 @@
 import re
 import hmac
 import webapp2
+import logging
 
 from google.appengine.ext import db
 
@@ -210,12 +211,25 @@ class DeletePost(BlogHandler):
         if self.user:
             key = db.Key.from_path('Post', int(post_id), parent=blog_key())
             post = db.get(key)
-
+            # logging.info(post)
+            # check if the post exist in the database
+            Xposts = Post.all().filter("post_id",int(post_id))
+            # logging.info(Xposts)
             if not post:
+                # if user is not logged in redirect to login page
                 return self.redirect('/login')
 
+
             if post.user_id == self.user.key().id():
+            # if post.user_id == Xposts.post_id:
                 post.delete()
+
+                # delete all the comments associated with that post
+                comments = Comment.all()
+                comments.filter("post_id",int(post_id))
+                for comment in comments:
+                    comment.delete()
+
                 self.redirect("/?deleted_post_id="+post_id)
             else:
                 self.redirect("/blog/" + post_id + "?error=You don't have " +
