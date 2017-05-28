@@ -33,7 +33,14 @@ In order to install and run the project please follow the following steps:
 6. To terminate the Localhost IP on Google Cloud SDK Shell commandline type **Ctrl+C**.
 7. Wish you luck, and hope you are not depending on it.
 
+## Debug
+To write on the console in Google App Engine for debugging use the following in blog.py:
+```
+   import logging
+
+   logging.info("hello")
+```
 
 ## License
 
-`Multi-User-Blog` is a public domain work, dedicated using feel free to do whatever you want with it.
+`Multi-User-Blog` is a released under the [MIT License](https://opensource.org/licenses/MIT)
