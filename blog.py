@@ -308,9 +308,10 @@ class DeleteComment(BlogHandler):
 class EditComment(BlogHandler):
     def get(self, post_id, comment_id):
         if self.user:
-            key = db.Key.from_path('Comment', int(comment_id),
-                                   parent=blog_key())
+            key = db.Key.from_path('Comment', int(comment_id), parent=blog_key())
             c = db.get(key)
+            if not c:
+                return self.redirect('/login')
             if c.user_id == self.user.key().id():
                 return self.render("editcomment.html", comment=c.comment)
             else:
@@ -334,14 +335,13 @@ class EditComment(BlogHandler):
             # if post does not exist, redirect to login page
             return self.redirect('/login')
         #make sure the user owns the post
-        if self.user.key().id() != comment.user_id:
-            ## handle case
-            return self.redirect('/login')
-
         if self.user:
             if comment:
                 key = db.Key.from_path('Comment',int(comment_id), parent=blog_key())
                 c = db.get(key)
+                if self.user.key().id() != c.user_id:
+                    ## handle case
+                    return self.redirect('/login')
                 c.comment = comment
                 c.put()
                 self.redirect('/blog/%s' % post_id)
