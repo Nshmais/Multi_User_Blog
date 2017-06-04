@@ -266,11 +266,11 @@ class EditPost(BlogHandler):
             if subject and content:
                     key = db.Key.from_path('Post', int(post_id), parent=blog_key())
                     post = db.get(key)
-                    #make sure the post exist
+                    # make sure the post exist
                     if not post:
                         # if post does not exist, redirect to login page
                         return self.redirect('/login')
-                    #make sure the user owns the post
+                    # make sure the user owns the post
                     if self.user.key().id() != post.user_id:
                         ## handle case
                         return self.redirect('/login')
@@ -280,7 +280,8 @@ class EditPost(BlogHandler):
                     return self.redirect('/blog/%s' % post_id)
             else:
                 error = "subject and content, please!"
-                return self.render("editpost.html", subject=subject, content=content, error=error)
+                return self.render("editpost.html",
+                                    subject=subject, content=content, error=error)
 
 
 class DeleteComment(BlogHandler):
@@ -334,7 +335,7 @@ class EditComment(BlogHandler):
         if not comment:
             # if post does not exist, redirect to login page
             return self.redirect('/login')
-        #make sure the user owns the post
+        # make sure the user owns the post
         if self.user:
             if comment:
                 key = db.Key.from_path('Comment',int(comment_id), parent=blog_key())
