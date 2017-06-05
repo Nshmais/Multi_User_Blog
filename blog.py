@@ -13,7 +13,8 @@ import TemplateFile
 import hash_secret
 
 # import secret for hashing fom hash_secret.py
-secret=hash_secret.secret()
+secret = hash_secret.secret()
+
 
 def make_secure_val(val):
     """
@@ -221,7 +222,7 @@ class DeletePost(BlogHandler):
 
                 # delete all the comments associated with that post
                 comments = Comment.all()
-                comments.filter("post_id",int(post_id))
+                comments.filter("post_id", int(post_id))
                 for comment in comments:
                     comment.delete()
 
@@ -257,14 +258,16 @@ class EditPost(BlogHandler):
             Updates post.
         """
         if not self.user:
-             return self.redirect('/login')
+            return self.redirect('/login')
 
         subject = self.request.get('subject')
         content = self.request.get('content')
 
         if self.user:
             if subject and content:
-                    key = db.Key.from_path('Post', int(post_id), parent=blog_key())
+                    key = db.Key.from_path('Post',
+                                           int(post_id),
+                                           parent=blog_key())
                     post = db.get(key)
                     # make sure the post exist
                     if not post:
@@ -272,7 +275,7 @@ class EditPost(BlogHandler):
                         return self.redirect('/login')
                     # make sure the user owns the post
                     if self.user.key().id() != post.user_id:
-                        ## handle case
+                        # handle case
                         return self.redirect('/login')
                     post.subject = subject
                     post.content = content
@@ -281,7 +284,9 @@ class EditPost(BlogHandler):
             else:
                 error = "subject and content, please!"
                 return self.render("editpost.html",
-                                    subject=subject, content=content, error=error)
+                                   subject=subject,
+                                   content=content,
+                                   error=error)
 
 
 class DeleteComment(BlogHandler):
@@ -297,19 +302,22 @@ class DeleteComment(BlogHandler):
             if c.user_id == self.user.key().id():
                 c.delete()
                 return self.redirect("/blog/"+post_id+"?deleted_comment_id=" +
-                              comment_id)
+                                     comment_id)
             else:
-                return self.redirect("/blog/" + post_id + "?error=You don't have " +
-                              "access to delete this comment.")
+                return self.redirect("/blog/" + post_id +
+                                     "?error=You don't have " +
+                                     "access to delete this comment.")
         else:
-            return self.redirect("/login?error=You need to be logged, in order to " +
-                          "delete your comment!!")
+            return self.redirect("/login?error=You need to be logged," +
+                                 "in order to delete your comment!!")
 
 
 class EditComment(BlogHandler):
     def get(self, post_id, comment_id):
         if self.user:
-            key = db.Key.from_path('Comment', int(comment_id), parent=blog_key())
+            key = db.Key.from_path('Comment',
+                                   int(comment_id),
+                                   parent=blog_key())
             c = db.get(key)
             if not c:
                 return self.redirect('/login')
@@ -317,11 +325,11 @@ class EditComment(BlogHandler):
                 return self.render("editcomment.html", comment=c.comment)
             else:
                 return self.redirect("/blog/" + post_id +
-                              "?error=You don't have access to edit this " +
-                              "comment.")
+                                     "?error=You don't have access" +
+                                     "to edit this comment.")
         else:
-            return self.redirect("/login?error=You need to be logged, in order to" +
-                          " edit your post!!")
+            return self.redirect("/login?error=You need to be logged," +
+                                 "in order to edit your post!!")
 
     def post(self, post_id, comment_id):
         """
@@ -338,18 +346,22 @@ class EditComment(BlogHandler):
         # make sure the user owns the post
         if self.user:
             if comment:
-                key = db.Key.from_path('Comment',int(comment_id), parent=blog_key())
+                key = db.Key.from_path('Comment',
+                                       int(comment_id),
+                                       parent=blog_key())
                 c = db.get(key)
-                if self.user.key().id() != c.user_id:
-                    ## handle case
+                if c and self.user.key().id() != c.user_id:
+                    # handle case
                     return self.redirect('/login')
                 c.comment = comment
                 c.put()
                 self.redirect('/blog/%s' % post_id)
             else:
                 error = "subject and content, please!"
-                return self.render("editpost.html", subject=subject,
-                            content=content, error=error)
+                return self.render("editpost.html",
+                                   subject=subject,
+                                   content=content,
+                                   error=error)
 
 USER_RE = re.compile(r"^[a-zA-Z0-9_-]{3,20}$")
 
