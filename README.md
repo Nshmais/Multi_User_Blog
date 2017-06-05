@@ -7,6 +7,11 @@ The multi user Blog is a website that will allow users to create their own Blogs
 The users will be allowed to register (Sign up) and create a username and password to save their blogs.
 then the can login and acsess all his Blogs at any times he/she pleases.  
 
+## URL
+You can view the deployed application by [clicking here](https://multi-user-blog-169803.appspot.com/) or copy and paste the following URL: 
+```
+   https://multi-user-blog-169803.appspot.com/
+```
 
 ## Tools
 There are many tools uses in this project such as Google App Engine, postgres database, HTML, CSS, Python... etc.  
