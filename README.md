@@ -12,6 +12,7 @@ You can view the deployed application by [clicking here](https://multi-user-blog
 ```
    https://multi-user-blog-169803.appspot.com/
 ```
+for instruction to deploy the app to Gooogle App Engine [click here](https://cloud.google.com/appengine/docs/standard/python/getting-started/deploying-the-application) 
 
 ## Tools
 There are many tools uses in this project such as Google App Engine, postgres database, HTML, CSS, Python... etc.  
